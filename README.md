@@ -17,7 +17,7 @@ This project implements a smart contract on an EVM compatible blockchain for cro
 
 
 In your terminal, type the following
-```
+```shell
 git clone https://github.com/WilliamGiammona/FundMe-Contract.git
 
 yarn
@@ -43,6 +43,19 @@ The main folders are:
 * typechain-types - sets the types of the contracts
 * gas-report.txt (comes after running hh test) - shows the gas and gas price associated with the contract deployment and functions
 
+### Deployment 
+
+To deploy the Smart Contract, you'll first need to make sure your default network is correctly set. Go to the hardhat.config.ts file and add the network you want to deploy to ("mainnet" if you want to upload it to the ethereum mainnet) To add an additional network, you must add it in the networks object, and add the appropriate RPC URL in your .env file.
+
+In the 01-deploy-funeMe.ts, in args, the second argument is currently 0. This is the minimum dollar amount you want the funder to send. Don't forget to change it in the verify function in the same file.
+
+
+Finally, go to the terminal and type:
+
+```shell
+hh deploy
+```
+
 ### Testing
 
 To run tests, you'll first need to make sure your default network is correctly set. Go to the hardhat.config.ts file and add "hardhat" (it should already be set to this) if you want to test locally, "goerli" or "sepolia" if you want to test on a test network, or "mainnet" if you want to upload it to the ethereum main net. To add an additional network, you must add it in the networks object, and add the appropriate RPC URL in your .env file.
@@ -51,16 +64,7 @@ After adding the correct default network, add any additional tests you want to r
 
 Finally, go to the terminal and type:
 
-```
+```shell
 hh test
 ```
 
-### Deployment 
-
-To deploy the Smart Contract, you'll first need to make sure your default network is correctly set. Go to the hardhat.config.ts file and add the network you want to deploy to ("mainnet" if you want to upload it to the ethereum mainnet) To add an additional network, you must add it in the networks object, and add the appropriate RPC URL in your .env file.
-
-Finally, go to the terminal and type:
-
-```
-hh deploy
-```
