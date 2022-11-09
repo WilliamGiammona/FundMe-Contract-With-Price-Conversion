@@ -9,7 +9,7 @@
 
 # What is it for?
 
-This project implements a smart contract on an EVM compatible blockchain for crowdfunding. The owner of the contract can set the minimum funding amount, see who has funded the contract, how much was funded, and is the only one who can withdraw the funds to an address of his/her choice. 
+This project implements a smart contract on an EVM compatible blockchain for crowdfunding. The owner of the contract can set the minimum funding amount in dollars (It's converted to ETH using the PriceConverter.sol file and gets the current ETH to USD price using the price feed contract provided by chainlink), see who has funded the contract, how much was funded, and is the only one who can withdraw the funds to an address of his/her choice. 
 
 # Getting Started
 
