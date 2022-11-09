@@ -22,7 +22,7 @@ const deployFundMe: DeployFunction = async function (hre: HardhatRuntimeEnvironm
 
     const fundMe = await deploy("FundMe", {
         from: deployer,
-        args: [ethUsdPriceFeedAddress, 0],
+        args: [ethUsdPriceFeedAddress, 50],
         log: true,
         autoMine: true,
         waitConfirmations: networkConfig[chainId].blockConfirmations || 1,
@@ -32,7 +32,7 @@ const deployFundMe: DeployFunction = async function (hre: HardhatRuntimeEnvironm
     console.log("----------------------------------------------------");
 
     if (chainId !== 31337 && process.env.ETHERSCAN_API_KEY) {
-        await verify(fundMe.address, [ethUsdPriceFeedAddress, 0]);
+        await verify(fundMe.address, [ethUsdPriceFeedAddress, 50]);
     }
 };
 export default deployFundMe;
