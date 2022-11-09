@@ -47,7 +47,7 @@ The main folders are:
 
 To deploy the Smart Contract, you'll first need to make sure your default network is correctly set. Go to the hardhat.config.ts file and add the network you want to deploy to ("mainnet" if you want to upload it to the ethereum mainnet) To add an additional network, you must add it in the networks object, and add the appropriate RPC URL in your .env file.
 
-In the 01-deploy-funeMe.ts, in args, the second argument is currently 50. This is the minimum dollar amount you want the funder to send. Don't forget to change it in the verify function in the same file.
+Inside the deploy folder in the 01-deploy-funeMe.ts, the fundMe contract's second argument is currently 50. This is the minimum dollar amount you want the funder to send. When changing this number, don't forget to also change it in the verify function in the same file.
 
 
 Finally, go to the terminal and type:
