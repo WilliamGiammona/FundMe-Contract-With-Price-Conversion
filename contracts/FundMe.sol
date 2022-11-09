@@ -53,6 +53,13 @@ contract FundMe is Ownable {
         if (msg.value.getConversionRate(i_priceFeed) < i_minimumUsd) {
             revert FundMe__NotEnoughEth();
         }
+        address[] memory funders = s_funders;
+        for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
+            if (funders[funderIndex] == msg.sender) {
+                s_addressToAmountFunded[msg.sender] += msg.value;
+                return;
+            }
+        }
         s_funders.push(msg.sender);
         s_addressToAmountFunded[msg.sender] += msg.value;
     }

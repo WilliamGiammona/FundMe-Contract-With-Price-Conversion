@@ -50,6 +50,28 @@ network.config.chainId !== 31337
                   await fundMe.fund({ value: VAL });
                   assert.equal((await fundMe.getAddressToAmountFunded(deployer.address)).toString(), VAL.toString());
               });
+
+              it("Correctly adds the additional amount to the existing funder account", async function () {
+                  await fundMe.fund({ value: VAL });
+                  fundMe = await fundMe.connect(player1);
+                  await fundMe.fund({ value: VAL });
+                  fundMe = await fundMe.connect(deployer);
+                  await fundMe.fund({ value: VAL });
+
+                  assert.equal(
+                      (await fundMe.getAddressToAmountFunded(deployer.address)).toString(),
+                      "50000000000000000"
+                  );
+              });
+
+              it("Doesn't add a past funder to an extra array spot", async function () {
+                  await fundMe.fund({ value: VAL });
+                  fundMe = await fundMe.connect(player1);
+                  await fundMe.fund({ value: VAL });
+                  fundMe = await fundMe.connect(deployer);
+                  await fundMe.fund({ value: VAL });
+                  await expect(fundMe.getFunders(2)).to.be.revertedWithPanic(50);
+              });
           });
 
           describe("receive", function () {
