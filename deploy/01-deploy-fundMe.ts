@@ -11,7 +11,7 @@ const deployFundMe: DeployFunction = async function (
   const { deployer } = await getNamedAccounts();
   const chainId: number = network.config.chainId!;
 
-  let ethUsdPriceFeedAddress: string = "hi";
+  let ethUsdPriceFeedAddress: string;
   if (chainId === 31337) {
     const ethUsdPriceFeed = (await deployments.get("MockV3Aggregator"))!;
     ethUsdPriceFeedAddress = ethUsdPriceFeed.address;
